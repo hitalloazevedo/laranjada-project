@@ -9,6 +9,8 @@ export default function Home() {
           <input className="border border-black rounded-md p-3" type="text" placeholder="Código super secreto"/>
           <input className="bg-green-600 rounded-md p-3" type="submit" value="Acessar" />
         </div>
+
+        <a href="#">Já sou da seita</a>
       </div>
 
     </div>
