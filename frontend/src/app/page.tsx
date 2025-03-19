@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Home() {
   return (
     <div className="h-screen">
@@ -10,7 +12,7 @@ export default function Home() {
           <input className="bg-green-600 rounded-md p-3" type="submit" value="Acessar" />
         </div>
 
-        <a href="#">Já sou da seita</a>
+        <Link href={'/auth/signin'}>Já sou da seita</Link>
       </div>
 
     </div>
