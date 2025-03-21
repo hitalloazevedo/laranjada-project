@@ -1,5 +1,6 @@
+import { v4 as uuidv4} from 'uuid';
 export class User {
-    private id: number;
+    private readonly uuid: string;
     private name: string;
     private phone: string;
     private email: string;
@@ -7,19 +8,19 @@ export class User {
     private givenOranges: number;
     private image: string;
 
-    constructor(id: number, name: string, phone: string, email: string, password: string, givenOranges: number, image: string) {
-        this.id = id;
+    constructor(name: string, phone: string, email: string, password: string, image: string) {
+        this.uuid = uuidv4();
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.password = password;
-        this.givenOranges = givenOranges;
+        this.givenOranges = 0;
         this.image = image;
     }
 
     // Getters
-    public getId(): number {
-        return this.id;
+    public getId(): string {
+        return this.uuid;
     }
 
     public getName(): string {
@@ -48,10 +49,6 @@ export class User {
 
 
     // Setters
-    public setId(id: number): void {
-        this.id = id;
-    }
-
     public setName(name: string): void {
         this.name = name;
     }

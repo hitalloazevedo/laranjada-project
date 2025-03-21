@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "dev":"tsc && node ./dist/index.js"
+  },
+  "dependencies": {
+    "@types/express": "^5.0.1",
+    "express": "^4.21.2",
+    "uuid": "^11.1.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  }
+}

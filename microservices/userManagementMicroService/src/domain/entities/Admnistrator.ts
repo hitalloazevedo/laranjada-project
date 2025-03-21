@@ -1,35 +1,24 @@
 import { User } from "./User";
 
 export class Administrator extends User {
-    private adminLevel: number;
     private managedGroups: number[];
+    private role: string;
 
     constructor(
-        id: number,
         name: string,
         phone: string,
         email: string,
         password: string,
-        givenOranges: number,
         image: string,
-        adminLevel: number,
         managedGroups: number[]
     ) {
-        super(id, name, phone, email, password, givenOranges, image);
-        this.adminLevel = adminLevel;
+        super(name, phone, email, password, image);
+        this.role = "admin";
         this.managedGroups = managedGroups;
-    }
-
-    public getAdminLevel(): number {
-        return this.adminLevel;
     }
 
     public getManagedGroups(): number[] {
         return this.managedGroups;
-    }
-
-    public setAdminLevel(level: number): void {
-        this.adminLevel = level;
     }
 
     public setManagedGroups(groups: number[]): void {

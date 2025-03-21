@@ -1,41 +1,26 @@
 import { User } from "../../../domain/entities/User";
+import { ICreateUserRequestDTO } from "./CreateUserDTO";
+import { UserRepository } from "../../../domain/repositories/UserRepository";
 
-interface CreateUserRequest {
-    name: string;
-    phone: string;
-    email: string;
-    password: string;
-    image: string;
-}
-
-interface CreateUserResponse {
-    user: User;
-}
 
 export class CreateUserUseCase {
-    constructor() {}
+    constructor(
+        private userRepository: UserRepository
+    ) {}
 
-    async execute(request: CreateUserRequest): Promise<CreateUserResponse> {
-        const { name, phone, email, password, image } = request;
+    async execute(userData: ICreateUserRequestDTO): Promise<void> {
+        // Desestruturar dados do usuário
+        const {name,phone,email,password,image} = userData;
+        const user = new User(name,phone,email,password,image);
 
-        // Create new user with default values for id and givenOranges
-        const user = new User(
-            Math.floor(Math.random() * 1000), // temporary ID generation
-            name,
-            phone,
-            email,
-            password,
-            0, // initial givenOranges
-            image
-        );
+        const userExists = await this.userRepository.findByEmail(email);
 
-        // Here you would typically:
-        // 1. Validate the input data
-        // 2. Check if user already exists
-        // 3. Hash the password
-        // 4. Save to database
-        // 5. Handle errors
+        if (userExists) {
+            //Break sem usar else
+            throw new Error('User already exists');
+        }
 
-        return { user };
+            // Salvar usuário
+        await this.userRepository.save(user);
     }
 }
