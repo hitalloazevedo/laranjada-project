@@ -72,4 +72,8 @@ export class User {
     public setImage(image: string): void {
         this.image = image;
     }
+
+    public comparePassowrd(password: string): boolean {
+        return this.password === password;
+    }
 }
