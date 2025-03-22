@@ -1,12 +1,14 @@
+import { Member } from "../../entities/Member";
 import { User } from "../../entities/User";
-import { UserRepository } from "../UserRepository";
+import { IUserRepository } from "../IUserRepository";
 
-export class InMemoryUserRepository implements UserRepository {
+export class InMemoryUserRepository implements IUserRepository {
 
     private usersList: Array<User>;
 
     constructor(){
         this.usersList = [];
+        this.usersList.push(new Member("hitallo", "234", "hitallo@gmail.com", "1234", "", 4))
     }
     
     async save(user: User): Promise<void> {
@@ -17,8 +19,8 @@ export class InMemoryUserRepository implements UserRepository {
         return this.usersList;
     }
 
-    findByEmail(email: string): Promise<User | null> {
-        throw new Error("Method not implemented.");
+    async findByEmail(email: string): Promise<User | null> {
+        return this.usersList.filter(user => user.getEmail() == email)[0];
     }
 
     findById(id: number): Promise<User | null> {
@@ -31,13 +33,3 @@ export class InMemoryUserRepository implements UserRepository {
         throw new Error("Method not implemented.");
     }
 }
-
-async function main() {
-    const repository = new InMemoryUserRepository();
-    const user = new User('name', 'phone', 'email', 'password', 'image');
-    await repository.save(user);
-    const users = await repository.findAll();
-    console.log(users);
-}
-
-main();
