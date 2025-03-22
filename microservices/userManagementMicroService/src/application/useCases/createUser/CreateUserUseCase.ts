@@ -1,11 +1,11 @@
 import { User } from "../../../domain/entities/User";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
-import { UserRepository } from "../../../domain/repositories/UserRepository";
+import { IUserRepository } from "../../../domain/repositories/IUserRepository";
 
 
 export class CreateUserUseCase {
     constructor(
-        private userRepository: UserRepository
+        private userRepository: IUserRepository
     ) {}
 
     async execute(userData: ICreateUserRequestDTO): Promise<void> {
