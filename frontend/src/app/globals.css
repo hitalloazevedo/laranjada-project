@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html{
+height: 100%;  
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -21,7 +25,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  @apply h-screen;
+  @apply min-h-screen;
 }
 
 h1 {
@@ -34,7 +38,7 @@ input > label {
 }
 
 .bg-default {
-  @apply bg-linear-to-b pt-20 from-[#262626] text-amber-50 via-[#222222] to-[#020203] flex items-center h-full flex-col gap-16;
+  @apply bg-linear-to-b pt-20 py-20 from-[#262626] text-amber-50 via-[#222222] to-[#020203] flex items-center h-full flex-col gap-16;
 }
 
 .btn1 {
@@ -43,4 +47,8 @@ input > label {
 
 .inp1 {
   @apply border border-amber-50 hover:bg-amber-50 focus:border-amber-950 focus:outline-2 text-amber-950 rounded-2xl p-3;
+}
+
+.select1 {
+  @apply border border-amber-50 bg-[#262626] text-amber-50 rounded-2xl p-3 focus:outline-2 focus:outline-amber-950 hover:bg-amber-50 hover:text-amber-950;
 }
