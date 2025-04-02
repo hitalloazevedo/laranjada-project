@@ -24,10 +24,23 @@ body {
   @apply h-screen;
 }
 
+h1 {
+  font-family: 'Courier New', Courier, monospace;
+  /* font-weight: bolder; */
+} 
+
+input > label {
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .bg-default {
-  @apply bg-linear-to-b pt-20 from-stone-900 text-amber-50 via-stone-800 to-orange-500 flex items-center h-full flex-col gap-16;
+  @apply bg-linear-to-b pt-20 from-[#262626] text-amber-50 via-[#222222] to-[#020203] flex items-center h-full flex-col gap-16;
 }
 
 .btn1 {
-  @apply bg-amber-500 hover:bg-amber-50 text-amber-900 rounded-2xl p-3;
+  @apply bg-[#fcad3f] hover:bg-amber-50 focus:border-amber-950 focus:outline-2 text-amber-950 rounded-2xl p-3;
+}
+
+.inp1 {
+  @apply border border-amber-50 hover:bg-amber-50 focus:border-amber-950 focus:outline-2 text-amber-950 rounded-2xl p-3;
 }
